@@ -90,7 +90,7 @@ const navigateToContact = () => {
 <template>
   <div class="min-h-screen bg-white">
     <!-- Hero Section -->
-    <section class="relative bg-gradient-to-br from-black/75 via-black/70 to-gray-900/75 text-white py-20 sm:py-24 px-6 sm:px-8 lg:px-4 overflow-hidden">
+    <section class="relative bg-gradient-to-br from-black/75 via-black/70 to-gray-900/75 text-white py-24 sm:py-28 lg:py-32 px-6 sm:px-8 lg:px-4 overflow-hidden">
       <div class="absolute inset-0 overflow-hidden pointer-events-none">
         <div class="absolute -top-40 -right-40 w-80 h-80 bg-[#f59e0b]/10 rounded-full blur-3xl"></div>
         <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-[#f59e0b]/10 rounded-full blur-3xl"></div>
@@ -107,7 +107,7 @@ const navigateToContact = () => {
     </section>
 
     <!-- Services Grid -->
-    <section class="py-16 sm:py-20 px-6 sm:px-8 lg:px-4 bg-gradient-to-b from-white to-gray-50">
+    <section class="py-20 sm:py-24 lg:py-28 px-6 sm:px-8 lg:px-4 bg-gradient-to-b from-white to-gray-50">
       <div class="max-w-7xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div 
@@ -168,7 +168,7 @@ const navigateToContact = () => {
     </section>
 
     <!-- CTA Section -->
-    <section class="py-16 sm:py-20 px-6 sm:px-8 lg:px-4 bg-gradient-to-br from-black via-gray-900 to-black">
+    <section class="py-20 sm:py-24 lg:py-28 px-6 sm:px-8 lg:px-4 bg-gradient-to-br from-black via-gray-900 to-black">
       <div class="max-w-4xl mx-auto text-center">
         <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
           Siap Mengabadikan Momen Anda?

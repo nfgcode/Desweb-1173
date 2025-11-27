@@ -49,27 +49,7 @@ const prevSlide = () => {
 };
 
 // Data-driven stats
-const stats = [
-  {
-    icon: 'fa-briefcase',
-    color: 'text-[#f59e0b]',
-    value: '25+',
-    label: 'Project Foto Event'
-  },
-  {
-    icon: 'fa-users',
-    color: 'text-[#10b981]',
-    value: '5000+',
-    label: 'Foto Sesi'
-  },
-  {
-    icon: 'fa-calendar',
-    iconType: 'fa-regular',
-    color: 'text-[#8b5cf6]',
-    value: '24/7',
-    label: 'Layanan Pelanggan'
-  }
-];
+const stats = [];
 
 // Story paragraphs - data-driven
 const storyParagraphs = [
@@ -116,14 +96,14 @@ onUnmounted(() => {
   <div class="min-h-screen">
     <!-- Hero Section -->
     <section 
-      class="relative text-white py-24 sm:py-32 lg:py-40 px-6 sm:px-8 lg:px-4 overflow-hidden bg-cover bg-center"
+      class="relative text-white py-32 sm:py-40 lg:py-48 px-6 sm:px-8 lg:px-4 overflow-hidden bg-cover bg-center"
       :style="{ backgroundImage: `url(${heroBg})` }"
     >
       <!-- Overlay Gradient -->
       <div class="absolute inset-0 bg-gradient-to-br from-black/75 via-black/70 to-gray-900/75 animate-gradient-fade"></div>
 
-      <div class="max-w-7xl mx-auto relative z-10">
-        <div class="max-w-3xl space-y-8">
+      <div class="max-w-7xl mx-auto relative z-10 text-center">
+        <div class="max-w-4xl mx-auto space-y-8">
           <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight animate-slide-in-up">
             Raise Production<br>
             <span class="bg-gradient-to-r from-[#f59e0b] via-[#fb923c] to-[#f59e0b] bg-clip-text text-transparent animate-gradient-x inline-block">
@@ -135,7 +115,7 @@ onUnmounted(() => {
           </p>
           
           <!-- CTA Buttons -->
-          <div class="flex flex-col sm:flex-row gap-4 animate-slide-in-up" style="animation-delay: 0.4s">
+          <div class="flex flex-col sm:flex-row gap-4 justify-center animate-slide-in-up" style="animation-delay: 0.4s">
             <button 
               @click="navigateToPage('/contact')"
               class="group inline-flex items-center justify-center gap-2 
@@ -165,8 +145,8 @@ onUnmounted(() => {
       </div>
 
       <!-- Stats Section -->
-      <div class="max-w-7xl mx-auto mt-16 sm:mt-20 relative z-10" data-animate="stats">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="max-w-7xl mx-auto mt-20 sm:mt-24 lg:mt-28 relative z-10" data-animate="stats">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
           <div 
             v-for="(stat, index) in stats" 
             :key="index"
@@ -196,7 +176,7 @@ onUnmounted(() => {
     </section>
 
     <!-- Tentang Kami Section -->
-    <section class="py-16 sm:py-20 px-6 sm:px-8 lg:px-4 bg-gradient-to-b from-white to-gray-50" data-animate="about">
+    <section class="py-20 sm:py-24 lg:py-28 px-6 sm:px-8 lg:px-4 bg-gradient-to-b from-white to-gray-50" data-animate="about">
       <div class="max-w-7xl mx-auto">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <!-- Image -->
@@ -237,7 +217,7 @@ onUnmounted(() => {
     </section>
 
     <!-- Portofolio Section -->
-    <section class="py-16 sm:py-20 px-6 sm:px-8 lg:px-4 bg-white" data-animate="portfolio">
+    <section class="py-20 sm:py-24 lg:py-28 px-6 sm:px-8 lg:px-4 bg-white" data-animate="portfolio">
       <div class="max-w-7xl mx-auto">
         <div class="text-center mb-12 opacity-0" :class="isVisible.portfolio ? 'animate-slide-in-down' : ''">
           <h2 class="text-3xl md:text-4xl font-bold text-[#1f2937] mb-4 hover:text-[#f59e0b] transition-colors duration-300">

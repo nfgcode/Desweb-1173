@@ -90,7 +90,7 @@ onUnmounted(() => {
 <template>
   <div class="min-h-screen bg-white">
     <!-- Hero Section -->
-    <section class="relative bg-gradient-to-br from-black/75 via-black/70 to-gray-900/75 text-white py-20 sm:py-24 px-6 sm:px-8 lg:px-4 overflow-hidden">
+    <section class="relative bg-gradient-to-br from-black/75 via-black/70 to-gray-900/75 text-white py-24 sm:py-28 lg:py-32 px-6 sm:px-8 lg:px-4 overflow-hidden">
       <div class="absolute inset-0 overflow-hidden pointer-events-none">
         <div class="absolute -top-40 -right-40 w-80 h-80 bg-[#f59e0b]/10 rounded-full blur-3xl animate-pulse-slow"></div>
         <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-[#f59e0b]/10 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 1s"></div>
@@ -107,13 +107,13 @@ onUnmounted(() => {
     </section>
 
     <!-- Testimonials Grid -->
-    <section class="py-16 sm:py-20 px-6 sm:px-8 lg:px-4 bg-gradient-to-b from-white to-gray-50" data-animate="testimonials">
+    <section class="py-20 sm:py-24 lg:py-28 px-6 sm:px-8 lg:px-4 bg-white" data-animate="testimonials">
       <div class="max-w-7xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div 
             v-for="(testimonial, index) in testimonials" 
             :key="index"
-            class="group bg-white rounded-2xl p-8 shadow-md hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 opacity-0"
+            class="group bg-gradient-to-br from-gray-900 to-black rounded-2xl p-8 shadow-md hover:shadow-2xl hover:shadow-[#f59e0b]/20 transition-all duration-500 transform hover:-translate-y-2 opacity-0 border border-gray-800 hover:border-[#f59e0b]"
             :class="isVisible.testimonials ? 'animate-scale-in' : ''"
             :style="`animation-delay: ${testimonial.delay}`"
           >
@@ -128,13 +128,13 @@ onUnmounted(() => {
             </div>
 
             <!-- Testimonial Text -->
-            <p class="text-gray-700 text-base leading-relaxed mb-6 italic">
+            <p class="text-gray-300 text-base leading-relaxed mb-6 italic">
               "{{ testimonial.text }}"
             </p>
 
             <!-- Client Info -->
             <div class="flex items-center gap-4">
-              <div class="w-14 h-14 rounded-full overflow-hidden ring-2 ring-[#f59e0b]/20 group-hover:ring-[#f59e0b] transition-all duration-300">
+              <div class="w-14 h-14 rounded-full overflow-hidden ring-2 ring-[#f59e0b]/30 group-hover:ring-[#f59e0b] transition-all duration-300">
                 <img 
                   :src="testimonial.image" 
                   :alt="testimonial.name"
@@ -142,10 +142,10 @@ onUnmounted(() => {
                 />
               </div>
               <div>
-                <h4 class="font-bold text-gray-800 group-hover:text-[#f59e0b] transition-colors duration-300">
+                <h4 class="font-bold text-white group-hover:text-[#f59e0b] transition-colors duration-300">
                   {{ testimonial.name }}
                 </h4>
-                <p class="text-sm text-gray-500">{{ testimonial.role }}</p>
+                <p class="text-sm text-gray-400">{{ testimonial.role }}</p>
               </div>
             </div>
           </div>
@@ -154,7 +154,7 @@ onUnmounted(() => {
     </section>
 
     <!-- Stats Section -->
-    <section class="py-16 sm:py-20 px-6 sm:px-8 lg:px-4 bg-gradient-to-br from-black via-gray-900 to-black" data-animate="stats">
+    <section class="py-20 sm:py-24 lg:py-28 px-6 sm:px-8 lg:px-4 bg-gradient-to-br from-black via-gray-900 to-black" data-animate="stats">
       <div class="max-w-7xl mx-auto">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
           <div class="opacity-0" :class="isVisible.stats ? 'animate-slide-in-up' : ''" style="animation-delay: 0s">
@@ -186,12 +186,18 @@ onUnmounted(() => {
     </section>
 
     <!-- CTA Section -->
-    <section class="py-16 sm:py-20 px-6 sm:px-8 lg:px-4 bg-white" data-animate="cta">
-      <div class="max-w-4xl mx-auto text-center opacity-0" :class="isVisible.cta ? 'animate-scale-in' : ''">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+    <section class="py-20 sm:py-24 lg:py-28 px-6 sm:px-8 lg:px-4 bg-gradient-to-br from-gray-900 via-black to-gray-900 relative overflow-hidden" data-animate="cta">
+      <!-- Decorative Elements -->
+      <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-1/2 left-1/4 w-96 h-96 bg-[#f59e0b]/10 rounded-full blur-3xl"></div>
+        <div class="absolute top-1/3 right-1/4 w-80 h-80 bg-[#f59e0b]/10 rounded-full blur-3xl"></div>
+      </div>
+
+      <div class="max-w-4xl mx-auto text-center opacity-0 relative z-10" :class="isVisible.cta ? 'animate-scale-in' : ''">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
           Jadilah Bagian dari Testimoni Kami
         </h2>
-        <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+        <p class="text-lg text-white/80 mb-8 leading-relaxed">
           Bergabunglah dengan ratusan klien yang puas dan biarkan kami mengabadikan momen berharga Anda
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">

@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
+import heroBg from '../assets/hero-bg.png';
 
 const route = useRoute();
 
@@ -8,6 +9,7 @@ const form = ref({
   nama: '',
   noHp: '',
   paket: '',
+  email: '',
   pesan: ''
 });
 
@@ -42,7 +44,8 @@ const paketOptions = [
 const isFormValid = computed(() => {
   return form.value.nama.trim() && 
          form.value.noHp.trim() && 
-         form.value.paket &&
+         form.value.paket.trim() &&
+         form.value.email.trim() &&
          form.value.pesan.trim();
 });
 
@@ -112,15 +115,15 @@ Mohon informasi lebih lanjut. Terima kasih!`;
       nama: '',
       noHp: '',
       paket: '',
+      email: '',
       pesan: ''
     };
   }, 1500);
 };
 
 const handleAddressClick = () => {
-  // Open Google Maps with the address
-  const address = 'QR87+WXJ, Jl. Letjen Suprapto, Baru Ilir, Kec. Balikpapan Bar., Kota Balikpapan, Kalimantan Timur';
-  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+  // Open Google Maps with Raise Production location
+  const mapsUrl = 'https://www.google.com/maps/place/Raise+Production/@-1.2326585,116.8123072,17z/data=!3m1!4b1!4m6!3m5!1s0x2df1470019c49bb5:0xb8dc3e335833f79!8m2!3d-1.2326585!4d116.8148821!16s%2Fg%2F11y2wcd8v8?entry=ttu';
   window.open(mapsUrl, '_blank');
 };
 
@@ -133,7 +136,7 @@ const handlePhoneClick = () => {
 
 const handleEmailClick = () => {
   // Open email client
-  const email = 'Service@raiseproduction.com';
+  const email = 'booking@raiseproduction.com';
   const subject = 'Pertanyaan tentang Raise Production';
   const mailtoUrl = `mailto:${email}?subject=${encodeURIComponent(subject)}`;
   window.location.href = mailtoUrl;
@@ -141,297 +144,203 @@ const handleEmailClick = () => {
 
 const contactInfo = [
   {
+    icon: 'fa-phone',
+    iconColor: 'text-gray-400',
+    title: 'TELEPON',
+    content: ['62 822-1351-5177'],
+    clickable: true,
+    onClick: handlePhoneClick,
+    clickHint: 'Klik untuk chat WhatsApp'
+  },
+  {
     icon: 'fa-location-dot',
-    iconColor: 'text-[#155DFC]',
-    title: 'Alamat',
+    iconColor: 'text-gray-400',
+    title: 'LOKASI',
     content: ['QR87+WXJ, Jl. Letjen Suprapto, Baru Ilir, Kec. Balikpapan Bar., Kota Balikpapan, Kalimantan Timur'],
     clickable: true,
     onClick: handleAddressClick,
     clickHint: 'Klik untuk buka di Maps'
   },
   {
-    icon: 'fa-phone',
-    iconColor: 'text-[#155DFC]',
-    title: 'Telepon',
-    content: ['62 822-1351-5177'],
-    subtitle: 'WhatsApp available',
-    clickable: true,
-    onClick: handlePhoneClick,
-    clickHint: 'Klik untuk chat WhatsApp'
+    icon: 'fa-clock',
+    iconColor: 'text-gray-400',
+    title: 'JAM OPERASIONAL',
+    content: ['Senin - Jumat: 09:00 - 22:00', 'Sabtu: 10:00 - 24:00', 'Minggu: 10:00 - 22:00'],
+    clickable: false
   },
   {
     icon: 'fa-envelope',
-    iconColor: 'text-[#155DFC]',
-    title: 'Email',
-    content: ['Service@raiseproduction.com'],
+    iconColor: 'text-gray-400',
+    title: 'EMAIL KAMI',
+    content: ['booking@raiseproduction.com'],
     clickable: true,
     onClick: handleEmailClick,
     clickHint: 'Klik untuk kirim email'
-  },
-  {
-    icon: 'fa-clock',
-    iconColor: 'text-[#155DFC]',
-    title: 'Jam Operasional',
-    content: ['Senin - Jumat: 06:00 - 23:00', 'Sabtu: 07:00 - 24:00', 'Minggu: 07:00 - 22:00'],
-    clickable: false
   }
 ];
 </script>
 
 <template>
-  <div class="min-h-screen bg-white">
+  <div class="min-h-screen bg-gray-50">
     <!-- Hero Section -->
-    <section class="relative bg-gradient-to-br from-black/75 via-black/70 to-gray-900/75 text-white py-16 sm:py-20 px-6 sm:px-8 lg:px-4 overflow-hidden">
-      <div class="absolute inset-0 overflow-hidden pointer-events-none">
-        <div class="absolute -top-40 -right-40 w-80 h-80 bg-white/5 rounded-full blur-3xl"></div>
-        <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-white/5 rounded-full blur-3xl"></div>
-      </div>
+    <section 
+      class="relative text-white py-20 sm:py-24 lg:py-28 px-6 sm:px-8 lg:px-4 overflow-hidden bg-cover bg-center"
+      :style="{ backgroundImage: `url(${heroBg})` }"
+    >
+      <!-- Overlay Gradient -->
+      <div class="absolute inset-0 bg-gradient-to-br from-black/75 via-black/70 to-gray-900/75"></div>
 
-      <div class="max-w-7xl mx-auto relative z-10">
-        <h1 class="text-4xl md:text-5xl font-bold mb-4 animate-fade-in">
+      <div class="max-w-7xl mx-auto relative z-10 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">
           Hubungi Kami
         </h1>
-        <p class="text-lg md:text-xl text-white/90 max-w-2xl animate-fade-in-delay">
-          Ada pertanyaan? Tim kami siap membantu Anda. Hubungi kami melalui form atau informasi kontak di bawah ini
+        <p class="text-lg md:text-xl text-white/90 max-w-2xl mx-auto">
+          Ada pertanyaan? Tim kami siap membantu Anda
         </p>
       </div>
     </section>
 
     <!-- Contact Info Cards -->
-    <section class="py-16 px-6 sm:px-8 lg:px-4">
-      <div class="max-w-7xl mx-auto">
+    <section class="py-12 px-6 sm:px-8 lg:px-4 -mt-8">
+      <div class="max-w-6xl mx-auto">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <div 
             v-for="(info, index) in contactInfo" 
             :key="index"
             @click="info.clickable ? info.onClick() : null"
-            class="group bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden"
+            class="group bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-all duration-300 relative"
             :class="{
-              'cursor-pointer active:scale-95': info.clickable,
+              'cursor-pointer': info.clickable,
               'cursor-default': !info.clickable
             }"
           >
-            <!-- Click hint overlay -->
-            <div 
-              v-if="info.clickable" 
-              class="absolute top-2 right-2 bg-[#f59e0b] text-white text-xs px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-1"
-            >
-              <i class="fa-solid fa-hand-pointer text-xs"></i>
-              <span class="hidden sm:inline">{{ info.clickHint }}</span>
-            </div>
-            
-            <!-- Animated background gradient -->
-            <div 
-              v-if="info.clickable"
-              class="absolute inset-0 bg-gradient-to-r from-[#f59e0b]/0 via-[#f59e0b]/5 to-[#f59e0b]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-            ></div>
-            
-            <div class="relative z-10">
-              <div class="bg-blue-50 w-14 h-14 rounded-xl flex items-center justify-center mb-4 group-hover:bg-[#f59e0b] transition-all duration-300" :class="{ 'group-hover:scale-110': info.clickable }">
+            <div class="relative z-10 text-center">
+              <div class="flex justify-center mb-4">
                 <i 
-                  :class="['fa-solid', info.icon, 'text-2xl', 'group-hover:text-white', 'transition-all', 'duration-300', 'text-[#f59e0b]', { 'group-hover:animate-pulse': info.clickable }]"
+                  :class="['fa-solid', info.icon, 'text-3xl', info.iconColor]"
                 ></i>
               </div>
-              <h3 class="text-lg font-medium text-gray-800 mb-3 group-hover:text-[#f59e0b] transition-colors duration-300">{{ info.title }}</h3>
-              <div class="text-sm text-gray-700 leading-relaxed">
-                <p v-for="(line, idx) in info.content" :key="idx" :class="{ 'mb-1': idx < info.content.length - 1, 'font-medium': info.clickable }">
+              <h3 class="text-xs font-bold text-gray-900 mb-3 tracking-wide uppercase">{{ info.title }}</h3>
+              <div class="text-sm text-gray-600 leading-relaxed">
+                <p v-for="(line, idx) in info.content" :key="idx" :class="{ 'mb-1': idx < info.content.length - 1 }">
                   {{ line }}
-                </p>
-                <p v-if="info.subtitle" class="text-xs text-gray-500 mt-2 flex items-center gap-1">
-                  <i class="fa-brands fa-whatsapp text-green-500"></i>
-                  {{ info.subtitle }}
                 </p>
               </div>
             </div>
+            
+            <!-- Hover underline -->
+            <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#f59e0b] to-[#fb923c] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 rounded-b-lg"></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Form & Map Section -->
-    <section class="py-16 px-6 sm:px-8 lg:px-4 bg-white">
-      <div class="max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <!-- Kirim Pesan Section -->
-          <div class="flex flex-col">
-            <h2 class="text-2xl md:text-3xl font-medium text-gray-800 mb-6">Kirim Pesan</h2>
-            
-            <div id="contact-form" class="bg-white rounded-2xl p-6 sm:p-8 shadow-md hover:shadow-lg transition-shadow duration-300 flex-1 relative overflow-hidden">
-              <!-- Fixed Notification Area -->
-              <div class="absolute top-0 left-0 right-0 z-10 pointer-events-none">
-                <div class="p-6 sm:p-8">
-                  <!-- Success Alert -->
-                  <Transition
-                    enter-active-class="transition-all duration-300"
-                    enter-from-class="opacity-0 -translate-y-4"
-                    enter-to-class="opacity-100 translate-y-0"
-                    leave-active-class="transition-all duration-200"
-                    leave-from-class="opacity-100 translate-y-0"
-                    leave-to-class="opacity-0 -translate-y-4"
-                  >
-                    <div 
-                      v-if="submitStatus === 'success'"
-                      class="p-4 bg-green-50 border border-green-200 rounded-lg flex items-start gap-3 shadow-lg pointer-events-auto"
-                    >
-                      <i class="fa-solid fa-circle-check text-green-500 text-xl mt-0.5 shrink-0"></i>
-                      <div>
-                        <p class="font-medium text-green-800">Pesan Berhasil Dikirim!</p>
-                        <p class="text-sm text-green-600 mt-1">Terima kasih. Kami akan segera menghubungi Anda.</p>
-                      </div>
-                    </div>
-                  </Transition>
-
-                  <!-- Error Alert -->
-                  <Transition
-                    enter-active-class="transition-all duration-300"
-                    enter-from-class="opacity-0 -translate-y-4"
-                    enter-to-class="opacity-100 translate-y-0"
-                    leave-active-class="transition-all duration-200"
-                    leave-from-class="opacity-100 translate-y-0"
-                    leave-to-class="opacity-0 -translate-y-4"
-                  >
-                    <div 
-                      v-if="submitStatus === 'error'"
-                      class="p-4 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3 shadow-lg pointer-events-auto"
-                    >
-                      <i class="fa-solid fa-circle-exclamation text-red-500 text-xl mt-0.5 shrink-0"></i>
-                      <div>
-                        <p class="font-medium text-red-800">Gagal Mengirim Pesan</p>
-                        <p class="text-sm text-red-600 mt-1">Mohon isi semua field dengan benar.</p>
-                      </div>
-                    </div>
-                  </Transition>
-                </div>
+    <!-- Form Section -->
+    <section class="py-12 px-6 sm:px-8 lg:px-4 bg-gray-50">
+      <div class="max-w-4xl mx-auto">
+        <div id="contact-form" class="bg-white rounded-lg p-8 shadow-sm">
+          <form 
+            @submit="submitForm" 
+            class="space-y-6"
+          >
+            <!-- Name & Rank Row -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <input
+                  type="text"
+                  id="nama"
+                  v-model.trim="form.nama"
+                  class="w-full px-0 py-3 bg-transparent border-0 border-b-2 border-black 
+                         focus:ring-0 focus:border-[#f59e0b] 
+                         outline-none transition-all duration-200 text-gray-800
+                         placeholder-gray-400"
+                  placeholder="Nama Lengkap"
+                  required
+                />
               </div>
-
-              <!-- Form with Dynamic Padding -->
-              <form 
-                @submit="submitForm" 
-                class="h-full flex flex-col space-y-4 transition-all duration-300"
-                :class="{ 'pt-28': submitStatus }"
-              >
-                <!-- Nama & Email Row -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div class="space-y-2">
-                    <label for="nama" class="block text-sm font-medium text-gray-800">
-                      Nama Lengkap <span class="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      id="nama"
-                      v-model.trim="form.nama"
-                      class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg 
-                             focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent 
-                             outline-none transition-all duration-200 text-sm
-                             hover:border-gray-300"
-                      placeholder="Masukkan nama lengkap Anda"
-                      required
-                    />
-                  </div>
-                  <div class="space-y-2">
-                    <label for="noHp" class="block text-sm font-medium text-gray-800">
-                      Nomor HP (WhatsApp) <span class="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="tel"
-                      id="noHp"
-                      v-model.trim="form.noHp"
-                      class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg 
-                             focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent 
-                             outline-none transition-all duration-200 text-sm
-                             hover:border-gray-300"
-                      placeholder="08xxxxxxxxxx"
-                      pattern="[0-9+\-\s]*"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <!-- Paket Pilihan -->
-                <div class="space-y-2">
-                  <label for="paket" class="block text-sm font-medium text-gray-800">
-                    Pilih Paket <span class="text-red-500">*</span>
-                  </label>
-                  <select
-                    id="paket"
-                    v-model="form.paket"
-                    class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg 
-                           focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent 
-                           outline-none transition-all duration-200 text-sm
-                           hover:border-gray-300 cursor-pointer"
-                    required
-                  >
-                    <option value="" disabled>Pilih paket yang Anda inginkan</option>
-                    <option v-for="paket in paketOptions" :key="paket.value" :value="paket.value">
-                      {{ paket.label }}
-                    </option>
-                  </select>
-                  <p class="text-xs text-gray-500 mt-1">
-                    <i class="fa-solid fa-info-circle"></i> Harga dapat disesuaikan berdasarkan kebutuhan khusus
-                  </p>
-                </div>
-
-                <!-- Pesan -->
-                <div class="flex-1 flex flex-col space-y-2">
-                  <label for="pesan" class="block text-sm font-medium text-gray-800">
-                    Pesan <span class="text-red-500">*</span>
-                  </label>
-                  <textarea
-                    id="pesan"
-                    v-model.trim="form.pesan"
-                    class="w-full flex-1 min-h-[150px] px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg 
-                           focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent 
-                           outline-none transition-all duration-200 resize-none text-sm
-                           hover:border-gray-300"
-                    placeholder="Tulis pesan Anda di sini..."
-                    required
-                  ></textarea>
-                </div>
-
-                <!-- Submit Button -->
-                <button
-                  type="submit"
-                  :disabled="!isFormValid || isSubmitting"
-                  class="w-full bg-[#f59e0b] text-white px-6 py-3 rounded-lg font-medium 
-                         hover:bg-[#d97706] active:scale-95
-                         transition-all duration-300 shadow-md hover:shadow-lg 
-                         flex items-center justify-center gap-2
-                         disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-[#f59e0b]"
+              <div>
+                <select
+                  id="paket"
+                  v-model="form.paket"
+                  class="w-full px-0 py-3 bg-transparent border-0 border-b-2 border-black 
+                         focus:ring-0 focus:border-[#f59e0b] 
+                         outline-none transition-all duration-200 text-gray-800
+                         cursor-pointer appearance-none"
+                  required
                 >
-                  <i 
-                    :class="['fa-solid', isSubmitting ? 'fa-spinner fa-spin' : 'fa-paper-plane']"
-                  ></i>
-                  <span>{{ isSubmitting ? 'Mengirim...' : 'Kirim Pesan' }}</span>
-                </button>
-              </form>
+                  <option value="" disabled class="text-gray-400">Pilih Paket</option>
+                  <option v-for="paket in paketOptions" :key="paket.value" :value="paket.value" class="text-gray-800">
+                    {{ paket.label }}
+                  </option>
+                </select>
+              </div>
             </div>
-          </div>
 
-          <!-- Lokasi Kami Section -->
-          <div class="flex flex-col">
-            <h2 class="text-2xl md:text-3xl font-medium text-gray-800 mb-6">Lokasi Kami</h2>
-            
-            <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-md hover:shadow-lg transition-shadow duration-300 flex-1">
+            <!-- Email & Contract Number Row -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <input
+                  type="email"
+                  id="email"
+                  v-model.trim="form.email"
+                  class="w-full px-0 py-3 bg-transparent border-0 border-b-2 border-black 
+                         focus:ring-0 focus:border-[#f59e0b] 
+                         outline-none transition-all duration-200 text-gray-800
+                         placeholder-gray-400"
+                  placeholder="Alamat Email"
+                  required
+                />
+              </div>
+              <div>
+                <input
+                  type="tel"
+                  id="noHp"
+                  v-model.trim="form.noHp"
+                  class="w-full px-0 py-3 bg-transparent border-0 border-b-2 border-black 
+                         focus:ring-0 focus:border-[#f59e0b] 
+                         outline-none transition-all duration-200 text-gray-800
+                         placeholder-gray-400"
+                  placeholder="Nomor Telepon"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- Comments -->
+            <div>
+              <textarea
+                id="pesan"
+                v-model.trim="form.pesan"
+                rows="4"
+                class="w-full px-0 py-3 bg-transparent border-0 border-b-2 border-black 
+                       focus:ring-0 focus:border-[#f59e0b] 
+                       outline-none transition-all duration-200 resize-none text-gray-800
+                       placeholder-gray-400"
+                placeholder="Pesan Anda"
+                required
+              ></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="flex justify-center pt-4">
               <button
-                @click="openMap"
-                type="button"
-                class="w-full h-full min-h-[300px] bg-linear-to-br from-gray-100 to-gray-200 rounded-xl 
-                       flex flex-col items-center justify-center 
-                       hover:from-gray-200 hover:to-gray-300
-                       transition-all duration-300 cursor-pointer group
-                       focus:outline-none focus:ring-2 focus:ring-[#155DFC] focus:ring-offset-2"
+                type="submit"
+                :disabled="isSubmitting"
+                class="group inline-flex items-center justify-center gap-2 
+                       bg-gradient-to-r from-[#f59e0b] to-[#fb923c] text-white px-12 py-3.5 rounded-lg font-medium 
+                       border-2 border-transparent hover:border-[#f59e0b] hover:from-[#fb923c] hover:to-[#f59e0b]
+                       transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-[#f59e0b]/50
+                       active:scale-95 hover:scale-105 relative overflow-hidden
+                       disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
               >
-                <div class="text-center">
-                  <i class="fa-solid fa-map-location-dot text-6xl text-gray-300 mb-4 
-                           group-hover:text-[#f59e0b] group-hover:scale-110 
-                           transition-all duration-300"></i>
-                  <p class="text-gray-400 font-medium group-hover:text-gray-800 transition-colors duration-300">
-                    Klik untuk melihat Maps
-                  </p>
-                </div>
+                <span class="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></span>
+                <i 
+                  :class="['fa-solid', isSubmitting ? 'fa-spinner fa-spin' : 'fa-paper-plane', 'group-hover:scale-110 transition-all duration-300 relative z-10']"
+                ></i>
+                <span class="relative z-10">{{ isSubmitting ? 'Mengirim...' : 'Kirim Pesan' }}</span>
               </button>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </section>

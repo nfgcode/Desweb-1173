@@ -1,14 +1,29 @@
 <template>
-  <div class="pricing-section">
-    <div class="container">
-      <div class="pricing-header">
-        <h1>Paket Dokumentasi</h1>
-        <p>Pilih paket yang sesuai dengan kebutuhan Anda</p>
-      </div>
+  <div class="min-h-screen bg-white">
+    <!-- Hero Section -->
+    <section 
+      class="relative text-white py-20 sm:py-24 lg:py-28 px-6 sm:px-8 lg:px-4 overflow-hidden bg-cover bg-center"
+      :style="{ backgroundImage: `url(${heroBg})` }"
+    >
+      <!-- Overlay Gradient -->
+      <div class="absolute inset-0 bg-gradient-to-br from-black/75 via-black/70 to-gray-900/75"></div>
 
-      <div class="pricing-cards">
+      <div class="max-w-7xl mx-auto relative z-10 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 animate-slide-in-up">
+          Harga Paket Layanan
+        </h1>
+        <p class="text-lg md:text-xl text-white/90 max-w-3xl mx-auto animate-slide-in-up" style="animation-delay: 0.2s">
+          Dari acara intim hingga perayaan besar, kami menawarkan layanan foto dan video komprehensif yang disesuaikan dengan kebutuhan Anda.
+        </p>
+      </div>
+    </section>
+
+    <!-- Pricing Cards Section -->
+    <section class="py-20 px-6 sm:px-8 lg:px-4" data-animate="pricing">
+      <div class="max-w-7xl mx-auto">
+        <div class="pricing-cards">
         <!-- Basic Package -->
-        <div class="pricing-card">
+        <div class="pricing-card opacity-0 translate-y-10" :class="isVisible.pricing ? 'animate-slide-in-up' : ''" style="animation-delay: 0s">
           <div class="card-header">
             <h3>Basic</h3>
             <div class="price">
@@ -30,7 +45,7 @@
         </div>
 
         <!-- Standard Package -->
-        <div class="pricing-card featured">
+        <div class="pricing-card featured opacity-0 translate-y-10" :class="isVisible.pricing ? 'animate-slide-in-up' : ''" style="animation-delay: 0.2s">
           <div class="badge">Popular</div>
           <div class="card-header">
             <h3>Standard</h3>
@@ -54,7 +69,7 @@
         </div>
 
         <!-- Premium Package -->
-        <div class="pricing-card">
+        <div class="pricing-card opacity-0 translate-y-10" :class="isVisible.pricing ? 'animate-slide-in-up' : ''" style="animation-delay: 0.4s">
           <div class="card-header">
             <h3>Premium</h3>
             <div class="price">
@@ -79,18 +94,22 @@
         </div>
       </div>
 
-      <div class="pricing-note">
-        <p>*Harga dapat disesuaikan berdasarkan lokasi dan kebutuhan khusus</p>
-        <p>Hubungi kami untuk konsultasi gratis dan penawaran khusus</p>
+        <div class="pricing-note opacity-0 translate-y-10" :class="isVisible.pricing ? 'animate-slide-in-up' : ''" style="animation-delay: 0.6s">
+          <p>*Harga dapat disesuaikan berdasarkan lokasi dan kebutuhan khusus</p>
+          <p>Hubungi kami untuk konsultasi gratis dan penawaran khusus</p>
+        </div>
       </div>
-    </div>
+    </section>
   </div>
 </template>
 
 <script setup>
+import { ref, onMounted, onUnmounted } from 'vue';
 import { useRouter } from 'vue-router';
+import heroBg from '../assets/hero-bg.png';
 
 const router = useRouter();
+const isVisible = ref({});
 
 const selectPackage = (packageType) => {
   // Navigate to contact page with package selection
@@ -99,35 +118,55 @@ const selectPackage = (packageType) => {
     query: { package: packageType }
   });
 };
+
+// Intersection Observer for scroll animations
+const observeElements = () => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const key = entry.target.dataset.animate;
+        if (entry.isIntersecting) {
+          isVisible.value[key] = true;
+        } else {
+          // Reset animation when element exits viewport
+          isVisible.value[key] = false;
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -100px 0px' }
+  );
+
+  const elements = document.querySelectorAll('[data-animate]');
+  elements.forEach((el) => observer.observe(el));
+
+  return observer;
+};
+
+let observer = null;
+
+onMounted(() => {
+  observer = observeElements();
+});
+
+onUnmounted(() => {
+  if (observer) observer.disconnect();
+});
 </script>
 
 <style scoped>
-.pricing-section {
-  padding: 80px 20px;
-  background: linear-gradient(135deg, #f5f7fa 0%, #e5e5e5 100%);
-  min-height: 100vh;
+@keyframes slide-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.pricing-header {
-  text-align: center;
-  margin-bottom: 60px;
-}
-
-.pricing-header h1 {
-  font-size: 3rem;
-  color: #1f2937;
-  margin-bottom: 15px;
-  font-weight: 700;
-}
-
-.pricing-header p {
-  font-size: 1.2rem;
-  color: #6b7280;
+.animate-slide-in-up {
+  animation: slide-in-up 0.6s ease-out forwards;
 }
 
 .pricing-cards {
@@ -178,10 +217,19 @@ const selectPackage = (packageType) => {
   color: white;
   padding: 40px 30px;
   text-align: center;
+  transition: all 0.3s ease;
+}
+
+.pricing-card:hover .card-header {
+  background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
 }
 
 .pricing-card.featured .card-header {
   background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+}
+
+.pricing-card.featured:hover .card-header {
+  background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
 }
 
 .card-header h3 {
@@ -246,10 +294,25 @@ const selectPackage = (packageType) => {
   transition: all 0.3s ease;
   text-transform: uppercase;
   letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-order::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.btn-order:hover::before {
+  transform: translateX(100%);
 }
 
 .btn-order:hover {
-  transform: translateY(-2px);
+  transform: translateY(-2px) scale(1.02);
   box-shadow: 0 10px 20px rgba(31, 41, 55, 0.4);
 }
 
@@ -259,6 +322,38 @@ const selectPackage = (packageType) => {
 
 .pricing-card.featured .btn-order:hover {
   box-shadow: 0 10px 20px rgba(245, 158, 11, 0.4);
+}
+
+.features li {
+  padding: 12px 0;
+  color: #555;
+  font-size: 1rem;
+  border-bottom: 1px solid #ecf0f1;
+  transition: all 0.3s ease;
+}
+
+.features li:hover {
+  color: #f59e0b;
+  padding-left: 10px;
+  background: linear-gradient(to right, rgba(245, 158, 11, 0.05), transparent);
+}
+
+.features li:last-child {
+  border-bottom: none;
+}
+
+.card-header h3 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
+}
+
+.pricing-card:hover .card-header h3 {
+  transform: scale(1.05);
+  letter-spacing: 3px;
 }
 
 .pricing-note {
