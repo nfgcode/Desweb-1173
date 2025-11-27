@@ -39,10 +39,26 @@ const navigateToTop = (path) => {
             </li>
             <li>
               <button 
+                @click="navigateToTop('/services')" 
+                class="text-sm hover:text-[#f59e0b] transition text-left"
+              >
+                Services
+              </button>
+            </li>
+            <li>
+              <button 
                 @click="navigateToTop('/pricing')" 
                 class="text-sm hover:text-[#f59e0b] transition text-left"
               >
                 Pricing
+              </button>
+            </li>
+            <li>
+              <button 
+                @click="navigateToTop('/testimonials')" 
+                class="text-sm hover:text-[#f59e0b] transition text-left"
+              >
+                Testimonials
               </button>
             </li>
             <li>

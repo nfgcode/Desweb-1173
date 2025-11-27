@@ -106,6 +106,20 @@ onUnmounted(() => {
             ></div>
           </button>
           <button 
+            @click="navigateToTop('/services')" 
+            class="relative px-4 py-2 font-medium text-base text-white transition-all duration-300 rounded-lg group overflow-hidden"
+            :class="$route.path === '/services' ? 'text-[#f59e0b]' : 'hover:text-[#f59e0b]'"
+          >
+            <span class="relative z-10 flex items-center gap-2">
+              <i class="fa-solid fa-briefcase text-sm"></i>
+              Services
+            </span>
+            <div 
+              class="absolute inset-0 bg-gradient-to-r from-[#f59e0b]/10 to-[#f59e0b]/5 transform origin-center transition-all duration-300 rounded-lg"
+              :class="$route.path === '/services' ? 'scale-100 opacity-100' : 'scale-0 opacity-0 group-hover:scale-100 group-hover:opacity-100'"
+            ></div>
+          </button>
+          <button 
             @click="navigateToTop('/pricing')" 
             class="relative px-4 py-2 font-medium text-base text-white transition-all duration-300 rounded-lg group overflow-hidden"
             :class="$route.path === '/pricing' ? 'text-[#f59e0b]' : 'hover:text-[#f59e0b]'"
@@ -117,6 +131,20 @@ onUnmounted(() => {
             <div 
               class="absolute inset-0 bg-gradient-to-r from-[#f59e0b]/10 to-[#f59e0b]/5 transform origin-center transition-all duration-300 rounded-lg"
               :class="$route.path === '/pricing' ? 'scale-100 opacity-100' : 'scale-0 opacity-0 group-hover:scale-100 group-hover:opacity-100'"
+            ></div>
+          </button>
+          <button 
+            @click="navigateToTop('/testimonials')" 
+            class="relative px-4 py-2 font-medium text-base text-white transition-all duration-300 rounded-lg group overflow-hidden"
+            :class="$route.path === '/testimonials' ? 'text-[#f59e0b]' : 'hover:text-[#f59e0b]'"
+          >
+            <span class="relative z-10 flex items-center gap-2">
+              <i class="fa-solid fa-star text-sm"></i>
+              Testimonials
+            </span>
+            <div 
+              class="absolute inset-0 bg-gradient-to-r from-[#f59e0b]/10 to-[#f59e0b]/5 transform origin-center transition-all duration-300 rounded-lg"
+              :class="$route.path === '/testimonials' ? 'scale-100 opacity-100' : 'scale-0 opacity-0 group-hover:scale-100 group-hover:opacity-100'"
             ></div>
           </button>
           <button 
@@ -156,12 +184,30 @@ onUnmounted(() => {
             <i class="fa-solid fa-chevron-right ml-auto text-xs opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"></i>
           </button>
           <button 
+            @click="navigateToTop('/services')"
+            class="w-full text-left flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 font-medium text-white hover:text-[#f59e0b] hover:bg-gray-800 group"
+            :class="{ 'text-[#f59e0b] bg-gray-800': $route.path === '/services' }"
+          >
+            <i class="fa-solid fa-briefcase text-sm group-hover:scale-110 transition-transform duration-300"></i>
+            <span>Services</span>
+            <i class="fa-solid fa-chevron-right ml-auto text-xs opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"></i>
+          </button>
+          <button 
             @click="navigateToTop('/pricing')"
             class="w-full text-left flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 font-medium text-white hover:text-[#f59e0b] hover:bg-gray-800 group"
             :class="{ 'text-[#f59e0b] bg-gray-800': $route.path === '/pricing' }"
           >
             <i class="fa-solid fa-tags text-sm group-hover:scale-110 transition-transform duration-300"></i>
             <span>Pricing</span>
+            <i class="fa-solid fa-chevron-right ml-auto text-xs opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"></i>
+          </button>
+          <button 
+            @click="navigateToTop('/testimonials')"
+            class="w-full text-left flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 font-medium text-white hover:text-[#f59e0b] hover:bg-gray-800 group"
+            :class="{ 'text-[#f59e0b] bg-gray-800': $route.path === '/testimonials' }"
+          >
+            <i class="fa-solid fa-star text-sm group-hover:scale-110 transition-transform duration-300"></i>
+            <span>Testimonials</span>
             <i class="fa-solid fa-chevron-right ml-auto text-xs opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"></i>
           </button>
           <button 
