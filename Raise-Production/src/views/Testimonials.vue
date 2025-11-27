@@ -107,7 +107,7 @@ onUnmounted(() => {
     </section>
 
     <!-- Testimonials Grid -->
-    <section class="py-20 sm:py-24 lg:py-28 px-6 sm:px-8 lg:px-4 bg-white" data-animate="testimonials">
+    <section class="py-20 sm:py-24 lg:py-28 px-6 sm:px-8 lg:px-4 bg-gradient-to-b from-gray-50 to-white" data-animate="testimonials">
       <div class="max-w-7xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div 
@@ -161,43 +161,43 @@ onUnmounted(() => {
             <div class="text-5xl font-bold text-[#f59e0b] mb-2 group-hover:scale-110 transition-transform duration-300">
               1000+
             </div>
-            <p class="text-white text-lg">Klien Puas</p>
+            <p class="text-gray-300 text-lg">Klien Puas</p>
           </div>
           <div class="opacity-0" :class="isVisible.stats ? 'animate-slide-in-up' : ''" style="animation-delay: 0.1s">
             <div class="text-5xl font-bold text-[#f59e0b] mb-2 group-hover:scale-110 transition-transform duration-300">
               500+
             </div>
-            <p class="text-white text-lg">Acara Terdokumentasi</p>
+            <p class="text-gray-300 text-lg">Acara Terdokumentasi</p>
           </div>
           <div class="opacity-0" :class="isVisible.stats ? 'animate-slide-in-up' : ''" style="animation-delay: 0.2s">
             <div class="text-5xl font-bold text-[#f59e0b] mb-2 group-hover:scale-110 transition-transform duration-300">
               98%
             </div>
-            <p class="text-white text-lg">Tingkat Kepuasan</p>
+            <p class="text-gray-300 text-lg">Tingkat Kepuasan</p>
           </div>
           <div class="opacity-0" :class="isVisible.stats ? 'animate-slide-in-up' : ''" style="animation-delay: 0.3s">
             <div class="text-5xl font-bold text-[#f59e0b] mb-2 group-hover:scale-110 transition-transform duration-300">
               5+
             </div>
-            <p class="text-white text-lg">Tahun Pengalaman</p>
+            <p class="text-gray-300 text-lg">Tahun Pengalaman</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="py-20 sm:py-24 lg:py-28 px-6 sm:px-8 lg:px-4 bg-gradient-to-br from-gray-900 via-black to-gray-900 relative overflow-hidden" data-animate="cta">
+    <section class="py-20 sm:py-24 lg:py-28 px-6 sm:px-8 lg:px-4 bg-white relative overflow-hidden" data-animate="cta">
       <!-- Decorative Elements -->
       <div class="absolute inset-0 overflow-hidden pointer-events-none">
-        <div class="absolute top-1/2 left-1/4 w-96 h-96 bg-[#f59e0b]/10 rounded-full blur-3xl"></div>
-        <div class="absolute top-1/3 right-1/4 w-80 h-80 bg-[#f59e0b]/10 rounded-full blur-3xl"></div>
+        <div class="absolute top-1/2 left-1/4 w-96 h-96 bg-[#f59e0b]/5 rounded-full blur-3xl"></div>
+        <div class="absolute top-1/3 right-1/4 w-80 h-80 bg-[#f59e0b]/5 rounded-full blur-3xl"></div>
       </div>
 
       <div class="max-w-4xl mx-auto text-center opacity-0 relative z-10" :class="isVisible.cta ? 'animate-scale-in' : ''">
-        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
           Jadilah Bagian dari Testimoni Kami
         </h2>
-        <p class="text-lg text-white/80 mb-8 leading-relaxed">
+        <p class="text-lg text-gray-600 mb-8 leading-relaxed">
           Bergabunglah dengan ratusan klien yang puas dan biarkan kami mengabadikan momen berharga Anda
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
@@ -214,8 +214,8 @@ onUnmounted(() => {
           <router-link
             to="/pricing"
             class="group inline-flex items-center justify-center gap-2 
-                   bg-white text-[#f59e0b] px-8 py-4 rounded-lg font-semibold text-lg
-                   border-2 border-[#f59e0b] hover:bg-[#f59e0b] hover:text-white active:scale-95
+                   bg-white text-gray-900 px-8 py-4 rounded-lg font-semibold text-lg
+                   border-2 border-gray-900 hover:bg-gray-900 hover:text-white active:scale-95
                    transition-all duration-300 shadow-lg"
           >
             <i class="fa-solid fa-tags group-hover:scale-110 group-hover:-rotate-12 transition-all duration-300"></i>
