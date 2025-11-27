@@ -6,7 +6,7 @@ const router = useRouter();
 
 const services = [
   {
-    icon: 'fa-rings-wedding',
+    icon: 'fa-heart',
     title: 'Fotografi Pernikahan',
     description: 'Mengabadikan hari spesial pernikahan anda dengan dokumentasi foto terbaik',
     image: 'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070',
