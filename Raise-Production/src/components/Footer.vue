@@ -22,7 +22,7 @@ const navigateToTop = (path) => {
             <h3 class="text-xl font-bold text-white">Raise Production</h3>
           </div>
           <p class="text-sm leading-relaxed">
-            Di Raise Production, kami tidak hanya memotret. Kami "mengangkat" setiap momen Anda. Misi kami adalah mengubah kenangan berharga menjadi cerita visual yang berkualitas tinggi, abadi, dan tak terlupakan. Make your moments rise with us.
+            Make your moments rise with us.
           </p>
         </div>
 
@@ -32,15 +32,23 @@ const navigateToTop = (path) => {
             <li>
               <button 
                 @click="navigateToTop('/')" 
-                class="text-sm hover:text-[#155DFC] transition text-left"
+                class="text-sm hover:text-[#f59e0b] transition text-left"
               >
                 Home
               </button>
             </li>
             <li>
               <button 
+                @click="navigateToTop('/pricing')" 
+                class="text-sm hover:text-[#f59e0b] transition text-left"
+              >
+                Pricing
+              </button>
+            </li>
+            <li>
+              <button 
                 @click="navigateToTop('/contact')" 
-                class="text-sm hover:text-[#155DFC] transition text-left"
+                class="text-sm hover:text-[#f59e0b] transition text-left"
               >
                 Contact
               </button>
@@ -72,15 +80,15 @@ const navigateToTop = (path) => {
           <ul class="space-y-2 text-sm">
             <li class="flex justify-between">
               <span>Senin - Jumat</span>
-              <span class="text-[#155DFC] font-medium">09:00 - 22:00</span>
+              <span class="text-[#f59e0b] font-medium">09:00 - 22:00</span>
             </li>
             <li class="flex justify-between">
               <span>Sabtu</span>
-              <span class="text-[#155DFC] font-medium">10:00 - 24:00</span>
+              <span class="text-[#f59e0b] font-medium">10:00 - 24:00</span>
             </li>
             <li class="flex justify-between">
               <span>Minggu</span>
-              <span class="text-[#155DFC] font-medium">10:00 - 22:00</span>
+              <span class="text-[#f59e0b] font-medium">10:00 - 22:00</span>
             </li>
           </ul>
 
@@ -90,7 +98,7 @@ const navigateToTop = (path) => {
               href="https://www.instagram.com/raise.production/" 
               target="_blank" 
               rel="noopener noreferrer"
-              class="text-xl hover:text-[#155DFC] transition" 
+              class="text-xl hover:text-[#f59e0b] transition" 
               aria-label="Instagram"
             >
               <i class="fa-brands fa-instagram"></i>
@@ -99,7 +107,7 @@ const navigateToTop = (path) => {
               href="https://www.tiktok.com" 
               target="_blank" 
               rel="noopener noreferrer"
-              class="text-xl hover:text-[#155DFC] transition" 
+              class="text-xl hover:text-[#f59e0b] transition" 
               aria-label="TikTok"
             >
               <i class="fa-brands fa-tiktok"></i>
@@ -108,7 +116,7 @@ const navigateToTop = (path) => {
               href="https://www.youtube.com" 
               target="_blank" 
               rel="noopener noreferrer"
-              class="text-xl hover:text-[#155DFC] transition" 
+              class="text-xl hover:text-[#f59e0b] transition" 
               aria-label="YouTube"
             >
               <i class="fa-brands fa-youtube"></i>
